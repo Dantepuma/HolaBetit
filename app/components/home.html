@@ -1,0 +1,35 @@
+<!-- import header from shared folder -->
+<div ui-view='header'></div>
+
+<div class="input-group m-b-10">
+  <span class="input-group-addon" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Search" ng-model="searchTxt" >
+  <span class="input-group-btn">
+    <button class="btn btn-success" ng-click="addContactFormShow(true)" type="button">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Add</button>
+  </span>
+</div>
+
+<!--import homeAddContactForm.html -->
+<div ui-view="addContactForm"><a id="editForm"></a></div>
+
+<!-- Searching information messages -->
+<div ng-show="searchTxt.length > 0 && filterd !== 0" class="alert alert-info">
+    <h3 class="margin-top margin-bottom-lg">
+      Search for: '{{searchTxt}}' and matched values: {{filterd=(contacts|filter:searchTxt).length}}
+    </h3>
+</div>
+
+<div class="alert alert-danger" ng-show="filterd === 0">
+  <h3 class="margin-top margin-bottom-lg"><i class="fa fa-meh-o" aria-hidden="true"></i>
+    Oops! No contacts matched.
+  </h3>
+</div>
+
+<!-- import homeTable.html -->
+<div class="table-responsive" ui-view="table" ng-show="filterd > 0">
+</div>
+
+<!-- footer import from shared folder-->
+<div ui-view='footer'></div>

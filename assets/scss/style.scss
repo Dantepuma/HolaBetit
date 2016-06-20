@@ -1,0 +1,16 @@
+$pixeldistance: (5, 10, 15, 20);
+$tablesize: (10,20,25,50);
+
+@each $space in $pixeldistance {
+  .m-b-#{$space} {
+    margin-bottom: #{$space}px;
+  }
+  .m-l-#{$space} {
+    margin-left: #{$space}px;
+  }
+}
+@each $width in $tablesize {
+  .t-#{$width} {
+    width: percentage($width/100);
+  }
+}

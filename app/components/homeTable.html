@@ -1,0 +1,46 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td class="t-20">
+        <a href="javascript:;" ng-click="sortField = 'firstName'; sortOrder = !sortOrder">
+          First Name
+          <i ng-show="sortField == 'firstName' && sortOrder" class="fa fa-chevron-up pull-right" aria-hidden="true"></i>
+          <i ng-show="sortField == 'firstName' && !sortOrder" class="fa fa-chevron-down pull-right" aria-hidden="true"></i>
+        </a>
+      </td>
+      <td class="t-20">
+        <a href="javascript:;" ng-click="sortField = 'lastName'; sortOrder = !sortOrder">
+          Lastname
+          <i ng-show="sortField == 'lastName' && sortOrder" class="fa fa-chevron-up pull-right" aria-hidden="true"></i>
+          <i ng-show="sortField == 'lastName' && !sortOrder" class="fa fa-chevron-down pull-right" aria-hidden="true"></i>
+        </a>
+      </td>
+      <td class="t-20">
+        <a href="javascript:;" ng-click="sortField = 'Email'; sortOrder = !sortOrder">
+          Email
+          <i ng-show="sortField == 'Email' && sortOrder" class="fa fa-chevron-up pull-right" aria-hidden="true"></i>
+          <i ng-show="sortField == 'Email' && !sortOrder" class="fa fa-chevron-down pull-right" aria-hidden="true"></i>
+        </a>
+      </td>
+      <td class="t-20">
+        <a href="javascript:;" ng-click="sortField = 'Country'; sortOrder = !sortOrder">
+          Country
+          <i ng-show="sortField == 'Country' && sortOrder" class="fa fa-chevron-up pull-right" aria-hidden="true"></i>
+          <i ng-show="sortField == 'Country' && !sortOrder" class="fa fa-chevron-down pull-right" aria-hidden="true"></i>
+        </a>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="contact in contacts | orderBy:sortField:sortOrder | filter:searchTxt as filtered">
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.lastName }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.country }}
+        <button class="btn btn-danger btn-sm pull-right m-l-5" ng-click="deleteContact(contact.id)">Delete</button>
+        <button class="btn btn-info btn-sm pull-right" ng-click="editContact(contact.id)">Edit</button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
